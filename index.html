@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="naver-site-verification" content="4301bfcd2e0010782a98cdf2c0de3f61851097df" />
+ <meta name="robots" content="index,follow">
+    <meta name="description" content="남현동 사당역 위치, 재활의학과 전문의 진료, 도수치료, 충격파치료, 방문진료 안내.">
+
+<meta property="og:title" content="사당역 재활의학과 - 하버드재활의학과의원">
+<meta property="og:description" content="남현동 통증의학과, 전문의 1:1 맞춤 진료 및 도수치료 서비스 제공.">
+<meta property="og:url" content="https://harvard-rehab.netlify.app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사당역 재활의학과 - 하버드재활의학과의원 | 남현동 통증의학과</title>
+   <meta name="naver-site-verification" content="bb973b67f6f96194c167234c7e9db1616dd6edbf" />
+  <meta name="google-site-verification" content="JIFOf0eLzZqmYiooutWoP9M5VO0hqGiAbtm2fTwWXLc" />
+<script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth; }
+        /* 무게감 있는 프리미엄 컬러 세팅 */
+        .bg-navy-dark { background-color: #001A3D; } /* 더 깊은 네이비 */
+        .bg-navy-main { background-color: #002D62; } /* 메인 네이비 */
+        .text-navy { color: #002D62; }
+        .text-gold { color: #A68942; } /* 고급스러운 골드 */
+        .bg-gold { background-color: #A68942; }
+        .bg-ivory { background-color: #F8F9FA; }
+        .border-navy { border-color: #002D62; }
+        
+        /* 사진 프레임: 클래식하고 안정적인 느낌 */
+        .doctor-frame {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 호버 효과 등 디테일 */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #A68942;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 leading-relaxed">
+
+    <!-- 상단 헤더 -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center relative">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-2xl font-black text-navy-main tracking-tighter italic">하버드</span>
+                <span class="text-xl font-medium text-gray-800 tracking-tight">재활의학과의원</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 lg:space-x-10 font-semibold text-gray-600 uppercase text-sm tracking-widest">
+                <a href="#about" class="nav-link hover:text-navy-main transition">의료진소개</a>
+                <a href="#clinic" class="nav-link hover:text-navy-main transition">진료과목</a>
+                <a href="#cost" class="nav-link hover:text-navy-main transition">진료비안내</a>
+                <a href="#visit" class="nav-link hover:text-navy-main transition">방문진료</a>
+                <a href="https://blog.naver.com/pmnrlee" target="_blank" class="nav-link text-gold hover:text-navy-main transition flex items-center gap-1">BLOG</a>
+                <a href="#location" class="nav-link hover:text-navy-main transition">오시는길</a>
+            </nav>
+
+            <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-50">
+                <span class="w-6 h-0.5 bg-navy-main transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-navy-main transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-navy-main transition-all duration-300"></span>
+            </button>
+
+            <div id="mobile-menu" class="fixed inset-0 bg-navy-dark transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 text-white text-xl font-bold">
+                <a href="#about" class="mobile-link">의료진소개</a>
+                <a href="#clinic" class="mobile-link">진료과목</a>
+                <a href="#cost" class="mobile-link">진료비안내</a>
+                <a href="#visit" class="mobile-link">방문진료</a>
+                <a href="https://blog.naver.com/pmnrlee" target="_blank" class="mobile-link text-gold">BLOG</a>
+                <a href="#location" class="mobile-link">오시는길</a>
+                <a href="tel:02-3474-8275" class="mt-4 border-2 border-gold text-gold px-8 py-3 rounded-full text-base">전화예약</a>
+            </div>
+        </div>
+    </header>
+<script>
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const spans = menuBtn.querySelectorAll('span');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('translate-x-full');
+            if (isOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                spans.forEach(s => s.style.backgroundColor = 'white');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+                spans.forEach(s => s.style.backgroundColor = '#002D62');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+                spans.forEach(s => s.style.backgroundColor = '#002D62');
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <!-- 메인 히어로 섹션 (무게감 있는 다크 배경) -->
+    <section class="relative pt-32 pb-24 bg-navy-dark text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 py-20 text-center">
+            <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tight">
+                다시 즐거운 일상으로, <br>
+                <span class="text-gold">품격 있는 의료서비스</span>로 함께합니다
+            </h2>
+            <div class="w-16 h-1 bg-gold mx-auto mb-8"></div>
+            <p class="text-gray-400 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">
+                재활의학과 전문의의 정밀한 진단과<br class="hidden md:block">
+                환자 한 분만을 위한 1:1 직접 도수치료 시스템을 경험하십시오.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <div class="flex items-center justify-center space-x-2 text-gold font-bold">
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                    <span>재활의학과 전문의 진료</span>
+                </div>
+                <div class="flex items-center justify-center space-x-2 text-gold font-bold">
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                    <span>점심/야간 예약진료 가능</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 의료진 소개 섹션 (원장 사진 포함) -->
+    <section id="about" class="py-24 bg-ivory">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-24">   
+                <!-- 원장님 실제 사진 적용 영역 -->
+                <div class="md:w-5/12">
+    <div class="doctor-frame p-2" style="background-color: #FDF5E6;">
+        <section class="py-20" style="background-color: #FDF5E6;">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-black text-navy-dark mb-8 leading-tight">
+                    18년 변함없는 <br>전문성과 진정성
+                </h2>
+                <p class="text-lg text-gray-700 leading-relaxed break-keep">
+                    "2008년 남현동에 첫 발을 내딛은 하버드재활의학과는 지난 18여 년간 변함없는 전문성과 진정성으로 지역 사회의 두터운 신뢰를 받는 의료기관으로 자리매김하였습니다."
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+                <div class="md:w-7/12">
+                    <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase">Director Profile</span>
+                    <h3 class="text-4xl font-black text-navy-main mt-4 mb-10 leading-none">
+                        원장 <span class="font-light">이상룡</span>
+                    </h3>
+                    
+                    <div class="space-y-10">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-6 flex items-center tracking-tighter">
+                                <span class="w-8 h-[1px] bg-navy-main mr-4"></span> 학력 및 주요 약력
+                            </h4>
+                            <ul class="text-gray-700 space-y-4 pl-12 text-base border-l border-gray-200">
+                                <li>고려대학교 의과대학 졸업</li>
+                                <li>고려대학교부속병원 전임의</li>
+                                <li>Spaulding Rehabilitation Hospital(Harvard Medical School) 연수</li>
+                                <li>대한재활의학회 정회원</li>
+                           </ul>
+                        </div>
+                        
+                        <div class="bg-white p-8 border border-gray-100 shadow-sm italic text-gray-600 leading-relaxed relative">
+                            <span class="absolute top-0 left-0 w-1 h-full bg-gold"></span>
+                            "하버드라는 이름에 걸맞은 <span class="text-navy-main font-bold">책임감</span>으로, <br>고려대학교부속병원에서 쌓은 임상 경험을 토대로 정직하게 진료하겠습니다."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 진료 과목 섹션 -->
+    <section id="clinic" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <span class="text-gold font-bold tracking-widest text-xs uppercase">Medical Services</span>
+                    <h3 class="text-3xl font-black text-navy-main mt-2">전문 진료 분야</h3>
+                </div>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">부위별, 증상별 맞춤 진료를 통해 근본적인 원인을 해결합니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 통증 클리닉 -->
+                <div class="group border border-gray-100 p-10 hover:bg-navy-main transition-all duration-500">
+                    <h4 class="text-xl font-bold mb-6 text-navy-main group-hover:text-gold transition">통증 클리닉</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition">
+                        경부통증, 어깨통증, 요통, 척추디스크, 좌골신경통, 대상포진
+                    </p>
+                </div>
+                <!-- 스포츠손상 -->
+                <div class="group border border-gray-100 p-10 hover:bg-navy-main transition-all duration-500">
+                    <h4 class="text-xl font-bold mb-6 text-navy-main group-hover:text-gold transition">스포츠 손상</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition">
+                        골프손상, 테니스엘보우, 무릎손상, 발목손상, 족부통증
+                    </p>
+                </div>
+                <!-- 중풍/순환 -->
+                <div class="group border border-gray-100 p-10 hover:bg-navy-main transition-all duration-500">
+                    <h4 class="text-xl font-bold mb-6 text-navy-main group-hover:text-gold transition">순환 및 예방</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition">
+                        중풍(뇌졸중) 예방클리닉, 혈액순환장애(손발 저림)
+                    </p>
+                </div>
+                <!-- 관절염 -->
+                <div class="group border border-gray-100 p-10 hover:bg-navy-main transition-all duration-500">
+                    <h4 class="text-xl font-bold mb-6 text-navy-main group-hover:text-gold transition">관절염 클리닉</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition">
+                        퇴행성 및 류마티스 관절염 집중 관리
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-10 bg-ivory flex flex-col md:flex-row justify-between items-center border border-gray-100">
+                <div class="flex items-center space-x-6">
+                    <span class="text-navy-main font-black text-xl italic tracking-tighter">DIAGNOSIS CENTER</span>
+                    <p class="text-gray-600 text-sm">근전도 검사 / 실시간 초음파(근육, 염증 진단) / 디지털 엑스레이</p>
+                </div>
+                <div class="flex gap-4 mt-6 md:mt-0">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-300 pb-1">Manual Therapy</span>
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-300 pb-1">Shock Wave</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 치료비 안내 (비급여) -->
+    <section id="cost" class="py-24 bg-ivory">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest text-xs uppercase">Transparent Price</span>
+                <h3 class="text-3xl font-black text-navy-main mt-2">비급여 치료비 안내</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-0 border border-gray-200 shadow-2xl">
+                <!-- 도수치료 -->
+                <div class="bg-navy-main p-12 text-white">
+                    <h4 class="text-2xl font-bold mb-10 flex items-center">
+                        <span class="w-6 h-[1px] bg-gold mr-4"></span> 도수치료
+                    </h4>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <span class="text-gray-400 text-sm">20분 과정</span>
+                            <span class="text-xl font-medium">경추 5만 / 요추 6만</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <span class="text-gold text-sm font-bold">40분 과정</span>
+                            <span class="text-3xl font-bold text-gold italic">경추 10만 / 요추 12만</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 체외충격파 -->
+                <div class="bg-white p-12 text-navy-main">
+                    <h4 class="text-2xl font-bold mb-10 flex items-center">
+                        <span class="w-6 h-[1px] bg-navy-main mr-4"></span> 체외충격파
+                    </h4>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-end border-b border-gray-100 pb-4">
+                            <span class="text-gray-400 text-sm">1부위 집중 치료</span>
+                            <span class="text-xl font-bold">60,000원</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-gray-100 pb-4">
+                            <span class="text-navy-main text-sm font-bold">2부위 동시 치료</span>
+                            <span class="text-3xl font-black italic">100,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-10 leading-relaxed">
+                ※ 모든 비급여 항목은 의료법을 준수하여 고지합니다. <br>
+                실손보험 적용 여부는 개별 약관에 따라 다를 수 있으니 데스크에 문의 바랍니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 방문진료 Q&A -->
+    <section id="visit" class="py-24 bg-navy-dark text-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="flex flex-col md:flex-row items-start gap-12">
+                <div class="md:w-1/3">
+                    <h3 class="text-3xl font-black leading-tight">방문진료 <br><span class="text-gold">찾아가는 진료</span></h3>
+                    <p class="text-gray-500 mt-6 text-sm">재활의학과 전문의가 <br>직접 댁으로 방문합니다.</p>
+                </div>
+                <div class="md:w-2/3 space-y-12">
+                    <div>
+                        <p class="text-gold font-bold mb-4 uppercase tracking-tighter">Q. 대상 환자군</p>
+                        <p class="text-gray-300 leading-relaxed font-light">마비, 수술 직후(1달 이내), 인지장애, 욕창 관리 필요 환자 등 거동이 현저히 불편하여 내원이 어려운 분들이 대상입니다.</p>
+                    </div>
+                    <div>
+                        <p class="text-gold font-bold mb-4 uppercase tracking-tighter">Q. 비용 및 본인부담</p>
+                        <p class="text-gray-300 leading-relaxed font-light">시범사업 대상자는 본인부담 30%가 적용됩니다. 이외 환자군은 100% 본인 부담(131,720원)으로 진료가 가능합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section id="location" class="py-20 bg-ivory">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-navy-dark mb-4 uppercase">Location & Hours</h2>
+                <div class="w-12 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-xl font-bold text-gray-900">서울특별시 관악구 남현길 7 한얼메디프라자 2층</p>
+                <p class="text-gray-500 mt-2">사당역 6번 출구에서 도보 5분 거리</p>
+            </div>
+
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-gray-100">
+   <div class="w-full md:w-2/3 h-[500px]">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.6565127265147!2d126.98064431252062!3d37.47708062943719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca0485038ad09%3A0x830222275dd26cb0!2z7ZWY67KE65Oc7J6s7Zmc7J2Y7ZWZ6rO87J2Y7JuQ!5e0!3m2!1sko!2skr!4v1741155350000!5m2!1sko!2skr" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+    </div>
+
+                <div class="w-full md:w-1/3 p-10 flex flex-col justify-center bg-navy-dark text-white">
+                    <div class="mb-10">
+                        <h4 class="text-gold font-bold mb-4 italic tracking-widest">CLINIC HOURS</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">평 일</span>
+                                <span class="font-bold text-gray-100 text-lg">09:00 - 18:00</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">토요일</span>
+                                <span class="font-bold text-gray-100 text-lg">09:00 - 14:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <h4 class="text-gold font-bold mb-4 italic tracking-widest uppercase">Reservation</h4>
+                        <div class="bg-navy-main p-4 rounded-xl border border-gold/30">
+                            <p class="text-white font-bold mb-2">점심 및 야간예약진료 안내</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                환자분들의 대기시간을 최소화하기 위해 <br>
+                                <span class="text-gold font-bold underline">점심시간 및 야간시간</span>은 <br>
+                                <span class="text-white font-bold text-lg">100% 예약제</span>로 운영됩니다.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <a href="tel:02-3474-8275" class="block w-full bg-gold text-white text-center py-4 rounded-xl font-bold hover:bg-opacity-90 transition-all shadow-lg">
+                        02-3474-8275 (예약문의)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-100 py-10">
+        <div class="max-w-6xl mx-auto px-4 text-center text-[10px] text-gray-400 uppercase tracking-widest">
+            <p>© 2024 Harvard Rehabilitation Medicine. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 9999;">
+        <a href="tel:0234748275" style="background-color: #A68942; color: white; padding: 18px 32px; border-radius: 60px; text-decoration: none; font-weight: 900; box-shadow: 0 15px 35px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 12px;">
+            <span>📞</span> 전화 예약 및 상담
+        </a>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
