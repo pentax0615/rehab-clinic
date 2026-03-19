@@ -252,128 +252,151 @@
             </div>
         </div>
     </section>
-<section id="scoliosis-tool" class="py-24 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-12">
-                <span class="text-gold font-bold tracking-widest text-xs uppercase">Self Diagnosis Tool</span>
-                <h3 class="text-3xl font-black text-navy-main mt-2">Cobb's Angle 자가 측정</h3>
-                <p class="text-gray-500 mt-4 text-sm">엑스레이 사진을 복사(Ctrl+C) 후 여기서 **Ctrl+V**를 눌러 직접 측정해보세요.</p>
+<section id="diagnosis-tools" class="py-24 bg-white border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="text-center mb-12">
+            <span class="text-gold font-bold tracking-widest text-xs uppercase">Self Diagnosis Tools</span>
+            <h3 class="text-3xl font-black text-navy-main mt-2">자가 진단 센터</h3>
+            <p class="text-gray-500 mt-4 text-sm">BMI 측정과 척추측만증 자가 검진을 한곳에서 확인하세요.</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+            
+            <div class="flex-1 bg-ivory p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col justify-center">
+                <h4 class="text-xl font-black text-navy-main mb-6 text-center">나의 BMI 지수 계산</h4>
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-1">신장 (cm)</label>
+                        <input type="number" id="height" placeholder="예: 171" class="w-full p-3 rounded-xl border border-gray-300 focus:outline-navy-main">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-1">체중 (kg)</label>
+                        <input type="number" id="weight" placeholder="예: 83" class="w-full p-3 rounded-xl border border-gray-300 focus:outline-navy-main">
+                    </div>
+                </div>
+                <button onclick="calculateBMI()" class="w-full bg-navy-main text-white py-4 rounded-xl font-bold hover:bg-opacity-90 transition shadow-md">결과 확인하기</button>
+                
+                <div id="result-area" class="mt-6 p-5 rounded-2xl text-center hidden border border-dashed border-gray-300">
+                    <div id="bmi-value" class="text-3xl font-black text-navy-main mb-1"></div>
+                    <div id="bmi-status" class="font-bold text-lg mb-2"></div>
+                    <p id="mounjaro-tip" class="text-xs text-gray-600 leading-relaxed"></p>
+                </div>
             </div>
 
-            <div class="bg-ivory p-8 rounded-3xl border border-gray-200 shadow-inner">
-                <div class="flex flex-col md:flex-row justify-center gap-4 mb-6">
-                    <label for="fileInput" class="bg-navy-main text-white px-6 py-3 rounded-xl font-bold cursor-pointer hover:bg-opacity-90 transition text-sm">
-                        📁 파일 선택
-                    </label>
+            <div class="flex-[1.5] bg-ivory p-8 rounded-3xl border border-gray-200 shadow-inner">
+                <h4 class="text-xl font-black text-navy-main mb-4 text-center">Cobb's Angle 측정</h4>
+                <div class="flex justify-center gap-3 mb-4">
+                    <label for="fileInput" class="bg-navy-main text-white px-4 py-2 rounded-lg font-bold cursor-pointer hover:bg-opacity-90 transition text-xs">📁 파일 선택</label>
                     <input type="file" id="fileInput" accept="image/*" class="hidden">
-                    <button onclick="resetApp()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold hover:bg-gray-300 transition text-sm">
-                        🔄 다시 측정하기
-                    </button>
+                    <button onclick="resetApp()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition text-xs">🔄 초기화</button>
                 </div>
-
-                <div id="status" class="text-center text-navy-main font-bold mb-4 animate-pulse">이미지를 붙여넣거나 파일을 선택해주세요.</div>
-
-                <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl mx-auto" style="max-width: 800px; min-height: 400px;">
+                <div id="status" class="text-center text-[11px] text-navy-main font-bold mb-2 animate-pulse">이미지를 붙여넣거나 파일을 선택하세요.</div>
+                
+                <div class="relative bg-black rounded-xl overflow-hidden shadow-lg mx-auto" style="min-height: 300px;">
                     <canvas id="scoliosisCanvas" class="w-full h-auto block cursor-crosshair"></canvas>
                 </div>
-
-                <div class="mt-8 text-center">
-                    <div class="text-gray-400 text-xs uppercase tracking-widest mb-2">Measured Angle</div>
-                    <div id="angleDisplay" class="text-5xl font-black text-gold italic">0.00°</div>
+                <div class="mt-4 text-center">
+                    <div id="angleDisplay" class="text-4xl font-black text-gold italic">0.00°</div>
                 </div>
             </div>
-            
-            <p class="text-center text-xs text-gray-400 mt-8 leading-relaxed">
-                ※ 본 도구는 참고용이며, 정확한 진단은 재활의학과 전문의의 진료와 판독이 필요합니다.
-            </p>
+
         </div>
-    </section>
 
-    <script>
-        const sCanvas = document.getElementById('scoliosisCanvas');
-        const sCtx = sCanvas.getContext('2d');
-        const statusText = document.getElementById('status');
-        const angleDisplay = document.getElementById('angleDisplay');
-        const sFileInput = document.getElementById('fileInput');
+        <p class="text-center text-[11px] text-gray-400 mt-8 leading-relaxed">
+            ※ 본 도구는 참고용이며, 정확한 진단은 하버드재활의학과 전문의의 진료가 필요합니다.
+        </p>
+    </div>
+</section>
 
-        let sImg = new Image();
-        let sPoints = [];
-        let sIsLoaded = false;
+<script>
+    /* BMI 로직 */
+    function calculateBMI() {
+        const h = document.getElementById('height').value / 100;
+        const w = document.getElementById('weight').value;
+        const resultArea = document.getElementById('result-area');
+        if (h > 0 && w > 0) {
+            const bmi = (w / (h * h)).toFixed(1);
+            resultArea.classList.remove('hidden');
+            document.getElementById('bmi-value').innerText = "BMI " + bmi;
+            let status = ''; let color = ''; let tip = '';
+            if (bmi < 18.5) { status = '저체중'; color = '#3498db'; }
+            else if (bmi < 23) { status = '정상'; color = '#2ecc71'; }
+            else if (bmi < 25) { status = '과체중'; color = '#f1c40f'; }
+            else if (bmi < 30) { status = '비만'; color = '#e67e22'; }
+            else { status = '고도비만'; color = '#e74c3c'; }
+            document.getElementById('bmi-status').innerText = status;
+            document.getElementById('bmi-status').style.color = color;
+            if (bmi >= 27) tip = "비만 치료제(마운자로 등) 처방 상담 가능 범위입니다.";
+            else tip = "꾸준한 건강관리가 필요합니다.";
+            document.getElementById('mounjaro-tip').innerText = tip;
+        }
+    }
 
-        // 붙여넣기 감지
-        window.addEventListener('paste', function(e) {
-            const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].type.indexOf('image') !== -1) {
-                    const blob = items[i].getAsFile();
-                    loadScoliosisImg(blob);
-                }
-            }
-        });
+    /* 기존 Cobb's Angle 로직 통합 (원장님 코드 그대로 유지) */
+    const sCanvas = document.getElementById('scoliosisCanvas');
+    const sCtx = sCanvas.getContext('2d');
+    const statusText = document.getElementById('status');
+    const angleDisplay = document.getElementById('angleDisplay');
+    const sFileInput = document.getElementById('fileInput');
+    let sImg = new Image(); let sPoints = []; let sIsLoaded = false;
 
-        sFileInput.addEventListener('change', (e) => {
-            if (e.target.files[0]) loadScoliosisImg(e.target.files[0]);
-        });
+    window.addEventListener('paste', function(e) {
+        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) loadScoliosisImg(items[i].getAsFile());
+        }
+    });
+    sFileInput.addEventListener('change', (e) => { if (e.target.files[0]) loadScoliosisImg(e.target.files[0]); });
 
-        function loadScoliosisImg(blob) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                sImg.onload = () => {
-                    const maxWidth = 900;
-                    const scale = maxWidth / sImg.width;
-                    sCanvas.width = maxWidth;
-                    sCanvas.height = sImg.height * scale;
-                    sIsLoaded = true;
-                    resetApp();
-                };
-                sImg.src = e.target.result;
+    function loadScoliosisImg(blob) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            sImg.onload = () => {
+                const maxWidth = 800; const scale = maxWidth / sImg.width;
+                sCanvas.width = maxWidth; sCanvas.height = sImg.height * scale;
+                sIsLoaded = true; resetApp();
             };
-            reader.readAsDataURL(blob);
-        }
+            sImg.src = e.target.result;
+        };
+        reader.readAsDataURL(blob);
+    }
 
-        sCanvas.addEventListener('mousedown', (e) => {
-            if (!sIsLoaded || sPoints.length >= 4) return;
-            const rect = sCanvas.getBoundingClientRect();
-            const x = (e.clientX - rect.left) * (sCanvas.width / rect.width);
-            const y = (e.clientY - rect.top) * (sCanvas.height / rect.height);
-            sPoints.push({x, y});
-            drawScoliosis();
-            if (sPoints.length === 2) statusText.innerText = "하단 척추체 라인을 클릭하세요 (2점)";
-            else if (sPoints.length === 4) calcAngle();
-        });
+    sCanvas.addEventListener('mousedown', (e) => {
+        if (!sIsLoaded || sPoints.length >= 4) return;
+        const rect = sCanvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left) * (sCanvas.width / rect.width);
+        const y = (e.clientY - rect.top) * (sCanvas.height / rect.height);
+        sPoints.push({x, y}); drawScoliosis();
+        if (sPoints.length === 2) statusText.innerText = "하단 척추체 라인을 클릭하세요 (2점)";
+        else if (sPoints.length === 4) calcAngle();
+    });
 
-        function drawScoliosis() {
-            sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
-            sCtx.drawImage(sImg, 0, 0, sCanvas.width, sCanvas.height);
-            sPoints.forEach((p, i) => {
-                sCtx.fillStyle = '#A68942';
-                sCtx.beginPath(); sCtx.arc(p.x, p.y, 8, 0, Math.PI*2); sCtx.fill();
-                if (i % 2 === 1) {
-                    sCtx.strokeStyle = (i < 2) ? '#3498db' : '#A68942';
-                    sCtx.lineWidth = 4;
-                    sCtx.beginPath(); sCtx.moveTo(sPoints[i-1].x, sPoints[i-1].y); sCtx.lineTo(p.x, p.y); sCtx.stroke();
-                }
-            });
-        }
-
-        function calcAngle() {
-            const p1 = sPoints[0], p2 = sPoints[1], p3 = sPoints[2], p4 = sPoints[3];
-            const m1 = (p2.y - p1.y) / (p2.x - p1.x);
-            const m2 = (p4.y - p3.y) / (p4.x - p3.x);
-            const angleRad = Math.atan(Math.abs((m2 - m1) / (1 + m1 * m2)));
-            angleDisplay.innerText = (angleRad * (180 / Math.PI)).toFixed(2) + "°";
-            statusText.innerText = "측정 완료";
-        }
-
-        function resetApp() {
-            sPoints = [];
-            angleDisplay.innerText = "0.00°";
-            if(sIsLoaded) {
-                statusText.innerText = "상단 척추체 라인을 클릭하세요 (2점)";
-                drawScoliosis();
+    function drawScoliosis() {
+        sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
+        sCtx.drawImage(sImg, 0, 0, sCanvas.width, sCanvas.height);
+        sPoints.forEach((p, i) => {
+            sCtx.fillStyle = '#A68942'; sCtx.beginPath(); sCtx.arc(p.x, p.y, 8, 0, Math.PI*2); sCtx.fill();
+            if (i % 2 === 1) {
+                sCtx.strokeStyle = (i < 2) ? '#3498db' : '#A68942'; sCtx.lineWidth = 4;
+                sCtx.beginPath(); sCtx.moveTo(sPoints[i-1].x, sPoints[i-1].y); sCtx.lineTo(p.x, p.y); sCtx.stroke();
             }
-        }
-    </script>
+        });
+    }
+
+    function calcAngle() {
+        const p1 = sPoints[0], p2 = sPoints[1], p3 = sPoints[2], p4 = sPoints[3];
+        const m1 = (p2.y - p1.y) / (p2.x - p1.x);
+        const m2 = (p4.y - p3.y) / (p4.x - p3.x);
+        const angleRad = Math.atan(Math.abs((m2 - m1) / (1 + m1 * m2)));
+        angleDisplay.innerText = (angleRad * (180 / Math.PI)).toFixed(2) + "°";
+        statusText.innerText = "측정 완료";
+    }
+
+    function resetApp() {
+        sPoints = []; angleDisplay.innerText = "0.00°";
+        if(sIsLoaded) { statusText.innerText = "상단 척추체 라인을 클릭하세요 (2점)"; drawScoliosis(); }
+    }
+</script>
     <!-- 치료비 안내 (비급여) -->
    <section id="cost" class="py-24 bg-ivory">
     <div class="container mx-auto px-6 max-w-5xl">
