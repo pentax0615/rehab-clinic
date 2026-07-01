@@ -402,25 +402,33 @@
     <div class="container mx-auto px-6 max-w-5xl">
         <div class="text-center mb-16">
             <span class="text-gold font-bold tracking-widest text-xs uppercase">Transparent Price</span>
-            <h3 class="text-3xl font-black text-navy-main mt-2">비급여 치료비 안내</h3>
+            <h3 class="text-3xl font-black text-navy-main mt-2">치료비 안내</h3>
         </div>
         
         <div onclick="window.open('https://blog.naver.com/pmnrlee/224204923316', '_blank')" 
              class="grid md:grid-cols-2 gap-0 border border-gray-200 shadow-2xl cursor-pointer hover:opacity-90 transition-opacity">
             <div class="bg-navy-main p-12 text-white">
-                <h4 class="text-2xl font-bold mb-10 flex items-center">
-                    <span class="w-6 h-[1px] bg-gold mr-4"></span> 도수치료
-                </h4>
-                <div class="space-y-8">
-                    <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                        <span class="text-gray-400 text-sm">20분 과정</span>
-                        <span class="text-xl font-medium">경추 5만 / 요추 6만</span>
-                    </div>
-                    <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                        <span class="text-gold text-sm font-bold">40분 과정</span>
-                        <span class="text-3xl font-bold text-gold italic">경추 10만 / 요추 12만</span>
-                    </div>
-                </div>
+               <h4 class="text-2xl font-bold mb-8 flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="w-6 h-[1px] bg-gold mr-4"></span>도수치료
+            </div>
+            <!-- 오늘 날짜 기준 건강보험 적용 강조 배지 -->
+            <span class="text-xs bg-red-500 text-white font-bold px-2 py-1 rounded">오늘부터 건강보험 적용!</span>
+        </h4>
+        <div class="space-y-6">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <span class="text-gray-400 text-sm">20분 과정 (경추/요추)</span>
+                <span class="text-lg font-semibold text-gold">선별(관리)급여 기준 적용</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <span class="text-gold text-sm font-bold">40분 과정 (경추/요추)</span>
+                <span class="text-lg font-semibold text-gold">보건복지부 고시 기준 산정</span>
+            </div>
+            <!-- 수납 시 마찰을 줄이기 위한 안내 문구 추가 -->
+            <p class="text-xs text-gray-400 pt-2 leading-relaxed">
+                * 2026년 7월 1일부터 정부 지침에 따라 관리급여로 전환되었습니다. 환자분의 증상 및 치료 횟수에 따른 본인부담금은 진료 후 수납 시 상세히 안내해 드립니다.
+            </p>
+        </div>
             </div>
             <div class="bg-white p-12 text-navy-main">
                 <h4 class="text-2xl font-bold mb-10 flex items-center">
