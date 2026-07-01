@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하버드재활의학과의원 - 공식 모바일 콘텐츠 허브</title>
+    
+    <!-- 프리미엄 서체 Pretendard 적용 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- 아이콘 라이브러리 FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #121824;     /* 고급스러운 다크 차콜 */
+            --accent-burgundy: #7E1A25;  /* 프리미엄 버건디 레드 */
+            --accent-rose: #F4EBEB;      /* 부드럽고 따뜻한 로즈 아이보리 배경 */
+            --bg-light: #FAF9F6;         /* 편안한 오프화이트 배경 */
+            --text-dark: #2c3540;        /* 본문 가독성 텍스트 */
+            --text-muted: #64748b;       /* 설명 서브 텍스트 */
+            --border-color: #f1f5f9;     /* 경계선 컬러 */
+            --insta-gradient: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); /* 인스타 무드 라인 */
+        }
+
+        /* 기본 설정 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Pretendard Variable", -apple-system, sans-serif;
+            letter-spacing: -0.03em;
+            -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 1. 인스타 스타일 모바일 특화 상단 헤더 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo span {
+            color: var(--accent-burgundy);
+            font-weight: 900;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.35rem;
+        }
+
+        .header-icons a {
+            color: var(--primary-dark);
+            transition: color 0.2s;
+        }
+
+        .header-icons a:hover {
+            color: var(--accent-burgundy);
+        }
+
+        /* 2. 인스타 프로필 컨셉의 인트로 구역 */
+        .profile-container {
+            max-width: 680px;
+            margin: 2.5rem auto 1.5rem auto;
+            padding: 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--insta-gradient);
+            padding: 4px; /* 테두리 그라데이션 간격 */
+            margin-bottom: 1.2rem;
+            box-shadow: 0 8px 20px rgba(238, 42, 123, 0.15);
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* 오피셜 마크 */
+        .profile-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #0095f6;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            border: 2.5px solid #fff;
+        }
+
+        .profile-info h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
+            color: var(--accent-burgundy);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 450px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 인스타 하이라이트 스타일 버튼 링크 */
+        .profile-highlights {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            width: 100%;
+            padding: 0.5rem 0;
+            justify-content: center;
+        }
+
+        /* 스크롤바 가리기 */
+        .profile-highlights::-webkit-scrollbar {
+            display: none;
+        }
+
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            min-width: 65px;
+            cursor: pointer;
+        }
+
+        .highlight-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 1px solid var(--accent-burgundy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            color: var(--accent-burgundy);
+            margin-bottom: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .highlight-item:hover .highlight-circle {
+            background-color: var(--accent-burgundy);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* 3. 모바일 간편 예약 및 액션 버튼 리스트 */
+        .action-links {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 0 auto 3rem auto;
+            padding: 0 1.2rem;
+        }
+
+        .action-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border: 1.5px solid var(--accent-burgundy);
+            padding: 1.1rem 1.5rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--accent-burgundy);
+            font-weight: 800;
+            font-size: 1.05rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(126, 26, 37, 0.03);
+        }
+
+        .action-btn i:first-child {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .action-btn.primary-btn {
+            background: var(--accent-burgundy);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 8px 20px rgba(126, 26, 37, 0.15);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(126, 26, 37, 0.08);
+        }
+
+        .action-btn.primary-btn:hover {
+            background: #60141c;
+            box-shadow: 0 10px 22px rgba(126, 26, 37, 0.25);
+        }
+
+        /* 4. [핵심 기능] 오늘의 홈케어 트레이닝 탭 섹션 */
+        .content-hub-section {
+            background-color: #ffffff;
+            padding: 4rem 1.2rem;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.02);
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .hub-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+        }
+
+        .hub-title span {
+            color: var(--accent-burgundy);
+        }
+
+        /* 가로 탭 버튼 영역 */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem auto;
+            background: #f1f5f9;
+            padding: 0.4rem;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: var(--accent-burgundy);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* 탭 가이드 카드 레이아웃 */
+        .tab-content {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #eaeaea;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .guide-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(126, 26, 37, 0.9);
+            color: #ffffff;
+            padding: 0.35rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .card-meta span i {
+            color: var(--accent-burgundy);
+            margin-right: 4px;
+        }
+
+        .view-guide-btn {
+            background: var(--accent-burgundy);
+            color: white;
+            border: none;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .view-guide-btn:hover {
+            background: #5c121a;
+        }
+
+        /* 5. 인스타 피드 스타일 소식 코너 */
+        .insta-feed-section {
+            background-color: var(--bg-light);
+            padding: 5rem 1.2rem;
+        }
+
+        .feed-header {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            text-align: center;
+        }
+
+        .feed-header h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feed-header p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .feed-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px; /* 실제 인스타처럼 얇은 격자 구조 */
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .feed-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #ddd;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .feed-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .feed-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .feed-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            gap: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .feed-item:hover .feed-overlay {
+            opacity: 1;
+        }
+
+        /* 6. 모달 팝업창 (상세 운동법 설명용) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .modal-header-img {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            position: relative;
+        }
+
+        .modal-header-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 2rem 1.8rem;
+        }
+
+        .modal-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-burgundy);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .modal-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .modal-steps {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-steps li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .modal-steps li::before {
+            content: "\f00c"; /* FontAwesome 체크 아이콘 */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-burgundy);
+            font-size: 0.9rem;
+        }
+
+        .modal-tips {
+            background-color: var(--accent-rose);
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            color: #5c121a;
+            border-left: 4px solid var(--accent-burgundy);
+        }
+
+        /* 7. 고정 하단 퀵 내비 바 (모바일 네비 최적화) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-item i {
+            font-size: 1.25rem;
+            margin-bottom: 2px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--accent-burgundy);
+        }
+
+        /* 8. 푸터 */
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            padding: 4rem 1.2rem 6rem 1.2rem; /* 네비 바 높이 대비 마진 */
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent-burgundy);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 모바일 최적화 미디어 쿼리 */
+        @media (max-width: 480px) {
+            .profile-avatar-wrapper {
+                width: 90px;
+                height: 90px;
+            }
+            .feed-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 모바일 최적화 탑 바 -->
+    <header>
+        <a href="#" class="logo">하버드<span>재활의학과</span></a>
+        <div class="header-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="tel:02-3474-8275"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </header>
+
+    <!-- 2. 인스타 프로필 형태의 병원 홍보 구역 -->
+    <div class="profile-container">
+        <div class="profile-avatar-wrapper">
+            <div class="profile-avatar">
+                <!-- 원장님 사진 또는 병원 로고 이미지 -->
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="하버드재활의학과 대표원장">
+            </div>
+            <div class="profile-badge"><i class="fa-solid fa-check"></i></div>
+        </div>
+        <div class="profile-info">
+            <h1>하버드재활의학과의원</h1>
+            <p class="profile-tagline">사당역 비수술 척추·관절 및 맞춤 홈케어</p>
+            <p class="profile-bio">
+                재활의학과 전문의가 직접 가르쳐 주는 정밀 도수치료 및 1:1 홈케어 스트레칭 가이드 채널에 오신 것을 환영합니다. 🙌
+            </p>
+        </div>
+
+        <!-- 인스타 하이라이트 스타일 단축키 메뉴 -->
+        <div class="profile-highlights">
+            <a href="#location" class="highlight-item">
+                <div class="highlight-circle"><i class="fa-solid fa-map-location-dot"></i></div>
+                <span>오시는길</span>
+            </a>
+            <a href="#hours" class="highlight-item">
+                <div class="highlight-circle"><i class="fa-solid fa-clock"></i></div>
+                <span>진료시간</span>
+            </a>
+            <a href="https://booking.naver.com" target="_blank" class="highlight-item">
+                <div class="highlight-circle" style="border-color:#03cf5d; color:#03cf5d;"><i class="fa-regular fa-calendar-check"></i></div>
+                <span>예약하기</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. 원클릭 연결 모바일 액션 버튼 리스트 (인스타 링크트리 스타일) -->
+    <div class="action-links">
+        <a href="tel:02-3474-8275" class="action-btn primary-btn">
+            <span><i class="fa-solid fa-phone-volume"></i> 1초 바로 전화 예약하기</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="https://booking.naver.com" target="_blank" class="action-btn">
+            <span><i class="fa-solid fa-calendar" style="color:#03cf5d;"></i> 네이버 모바일 신속 예약</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#today-homecare" class="action-btn">
+            <span><i class="fa-solid fa-person-running"></i> 통증 부위별 1분 맞춤홈트 보기</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+    </div>
+
+    <!-- 4. 인터랙티브 홈케어 운동 허브 (체조 / 근력운동 / 자세교정 탭) -->
+    <section class="content-hub-section" id="today-homecare">
+        <div class="hub-title">
+            <h2>🏠 오늘의 <span>부위별 홈케어</span> 처방</h2>
+        </div>
+
+        <!-- 탭 버튼 리스트 -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab(event, 'stretch-tab')">🤸‍♂️ 1분 체조</button>
+            <button class="tab-btn" onclick="openTab(event, 'muscle-tab')">💪 근력운동</button>
+            <button class="tab-btn" onclick="openTab(event, 'posture-tab')">🪞 자세교정</button>
+        </div>
+
+        <!-- 탭 1: 1분 체조 (스트레칭) -->
+        <div id="stretch-tab" class="tab-content active">
+            <!-- 체조 카드 1 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">체조 / 스트레칭</span>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="목 통증 완화 스트레칭">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>거북목 탈출! 후두하근 이완 체조</h3>
+                        <p>장시간 모니터를 본 후 뻐근한 목 뒤를 즉각적으로 이완시키고 두통을 방지해주는 초간단 체조입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-regular fa-clock"></i> 3분 소요 / 매일</span>
+                        <button class="view-guide-btn" onclick="openModal('거북목 탈출! 후두하근 이완 체조', ['양손을 깍지 껴 머리 뒤(뒤통수 바로 아래 움푹 파인 곳)에 올립니다.', '엄지손가락으로 머리 아래 뼈 끝부분을 위로 지그시 밀어 올립니다.', '턱을 몸쪽으로 부드럽게 당기며 시선은 아래를 내려다봅니다.', '호흡을 유지하며 이 자세를 15초간 3회 유지합니다.'], '과도하게 힘을 주어 누르면 통증이 악화될 수 있으니 부드럽게 밀어 올리는 느낌으로 진행해 주세요.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 체조 카드 2 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">체조 / 스트레칭</span>
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="허리 유연성 고양이 자세">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>허리 뻐근함 푸는 고양이-낙타 체조</h3>
+                        <p>척추 주변 근육을 유연하게 자극하고 수면 전후 허리의 굳은 뻣뻣함을 빠르게 풀어내는 동작입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-regular fa-clock"></i> 5분 소요 / 수면전</span>
+                        <button class="view-guide-btn" onclick="openModal('허리 뻐근함 푸는 고양이-낙타 체조', ['네발기기 자세를 취한 상태에서 어깨 아래 손목, 골반 아래 무릎이 오게 합니다.', '숨을 들이마시며 등을 하늘 방향으로 둥글게 말고 시선은 배꼽을 향합니다.', '숨을 내쉬며 가슴을 내리고 꼬리뼈가 하늘을 향하게 척추를 늘려 줍니다.', '동작을 서두르지 않고 척추 마디마디를 움직이며 10회 반복합니다.'], '허리에 날카로운 찌릿한 통증이 발생할 경우 무리해서 꺾지 말고 바로 동작을 중단해 주세요.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 탭 2: 근력 운동 -->
+        <div id="muscle-tab" class="tab-content">
+            <!-- 근력운동 카드 1 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">중골반 · 코어</span>
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="허리 통증 예방 엉덩이 브릿지">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>허리 안정을 위한 둔근 엉덩이 브릿지</h3>
+                        <p>허리의 부담을 덜어주고 골반을 안정되게 지지해 주는 가장 기본적이고 안전한 엉덩이 근육 강화 운동입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-regular fa-circle-play"></i> 3세트 / 주 4회</span>
+                        <button class="view-guide-btn" onclick="openModal('허리 안정을 위한 둔근 브릿지', ['바닥에 등을 대고 누워 무릎을 굽히고 발을 골반 너비로 벌립니다.', '발뒤꿈치로 바닥을 강하게 지지하며 엉덩이를 천천히 들어 올립니다.', '어깨부터 무릎까지 일직선이 되도록 만들며 엉덩이에 힘을 꽉 줍니다.', '최고 지점에서 2초 동안 멈춘 뒤 천천히 몸을 낮춥니다. 총 15회 진행합니다.'], '엉덩이가 아닌 허리 뒤쪽이 과도하게 뻐근하거나 꺾인다는 느낌이 든다면 높이를 약간 낮추어 진행해 주세요.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 근력운동 카드 2 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">견갑골 · 등</span>
+                    <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?auto=format&fit=crop&w=400&q=80" alt="굽은 어깨 등 근육 운동">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>굽은 어깨(라운드숄더) 교정 W운동</h3>
+                        <p>날개뼈 사이의 근력을 키워 굽은 가슴을 열고 당당하고 바른 상체 구조를 만들어주는 필수 동작입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-regular fa-circle-play"></i> 15회 / 매일</span>
+                        <button class="view-guide-btn" onclick="openModal('라운드숄더 교정 W운동', ['벽에 등과 엉덩이를 밀착시키거나 바르게 서서 팔을 옆으로 올립니다.', '팔꿈치를 구부려 양팔이 알파벳 W 모양이 되도록 만들어 줍니다.', '날개뼈가 서로 가까워지는 느낌으로 등 근육을 아래쪽으로 강하게 조여 내립니다.', '조인 상태에서 3초 버틴 후 제자리로 돌아옵니다. 15회씩 반복합니다.'], '어깨가 으쓱하며 목 주변(승모근)이 굳지 않도록 어깨를 최대한 낮춘 상태에서 뒤로 당겨야 효과적입니다.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 탭 3: 자세 교정 -->
+        <div id="posture-tab" class="tab-content">
+            <!-- 자세교정 카드 1 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">일상 자세 교정</span>
+                    <img src="https://images.unsplash.com/photo-1507207611509-ec012433ff52?auto=format&fit=crop&w=400&q=80" alt="바른 컴퓨터 작업 자세">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>사무실 척추 지키는 컴퓨터 모니터 세팅</h3>
+                        <p>매일 8시간씩 일하는 직장인들을 위한 목과 허리 디스크 압력을 반으로 줄여주는 황금 모니터 각도 배치입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-chair"></i> 사무실 세팅 필수</span>
+                        <button class="view-guide-btn" onclick="openModal('사무실 척추 지키는 바른 컴퓨터 자세', ['모니터 상단의 높이가 내 눈높이와 수평이 되도록 받침대나 모니터암을 조정합니다.', '모니터와 눈과의 거리는 팔을 쭉 뻗었을 때 닿을 정도(약 50~70cm)로 유지합니다.', '의자에 앉을 때 엉덩이를 끝까지 밀어 넣고 무릎 각도가 90도가 되도록 의자 높이를 맞춥니다.', '키보드와 마우스는 팔꿈치가 자연스럽게 몸통 옆에 고정될 수 있는 위치에 배치합니다.'], '눈높이가 조금만 낮아져도 목뼈에 얹어지는 머리 하중이 최대 20kg까지 증가하므로 받침대를 반드시 사용하세요.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 자세교정 카드 2 -->
+            <div class="guide-card">
+                <div class="card-img-wrapper">
+                    <span class="card-badge">골반 교정</span>
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80" alt="골반 바르게 앉기">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h3>다리 꼬기 습관 교정! 좌골 균형 앉기</h3>
+                        <p>만성 골반 틀어짐과 허리 통증을 유발하는 짝다리 짚기 및 다리 꼬기 습관을 효과적으로 교정하는 자세법입니다.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-scale-balanced"></i> 상시 유지</span>
+                        <button class="view-guide-btn" onclick="openModal('다리 꼬기 예방 좌골 균형 앉기', ['의자에 앉을 때 엉덩이 뼈 아래 양쪽에 균등하게 하중이 실리도록 좌우를 맞춥니다.', '양발 바닥 전체가 지면에 완전하게 닿도록 무릎과 골반 높이를 조정합니다.', '다리를 꼬고 싶은 충동이 생길 때마다 발바닥을 바닥에 한 번 더 꾹 눌러 줍니다.', '가슴을 활짝 펴며 꼬리뼈 위에 척추를 하나씩 바르게 차곡차곡 쌓는 느낌을 기억합니다.'], '다리를 꼬는 버릇은 척추를 비틀어 골반뿐만 아니라 턱관절과 두통까지 유발하는 가장 치명적인 주원인입니다.')">가이드 보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 인스타 피드 스타일 최신 정보 코너 -->
+    <section class="insta-feed-section">
+        <div class="feed-header">
+            <h2>📷 원장님의 최신 인스타 피드 소식</h2>
+            <p>다양한 최신 정형 재활 정보 및 병원 일상을 확인해보세요!</p>
+        </div>
+        
+        <!-- 인스타 피드형 타일형 갤러리 그리드 -->
+        <div class="feed-grid">
+            <div class="feed-item" onclick="openModal('도수 치료는 언제 받는 것이 좋을까요?', ['평소 원인을 모르는 근골격계 두통이나 만성 근육 통증이 지속될 때', '척추 관절 수술 후 조기 가동성 회복과 기능 보강이 필요할 때', '측만증, 다리 길이 차이, 라운드숄더 등 불균형한 신체 정렬의 교정이 필요할 때'], '개인의 상태에 부합하는 정밀 처방이 병행되어야 하므로 반드시 재활의학과 전문의의 정확한 정밀 진단 후 도수치료가 실행되어야 합니다.')">
+                <img src="https://images.unsplash.com/photo-1519824141121-b9de6e2686a7?auto=format&fit=crop&w=300&q=80" alt="도수치료 칼럼">
+                <div class="feed-overlay">
+                    <span><i class="fa-solid fa-heart"></i> 142</span>
+                    <span><i class="fa-solid fa-comment"></i> 18</span>
+                </div>
+            </div>
+            <div class="feed-item" onclick="openModal('허리 디스크 환자를 위한 수면 자세 처방', ['가장 올바른 기본 수면 자세는 등을 대고 누워 무릎 아래에 부드러운 쿠션을 받치는 것', '옆으로 수면을 취할 경우 양 무릎 사이에 배개나 쿠션을 끼워 골반의 과도한 비틀림을 방지하는 것', '가장 나쁜 자세인 엎드려 자는 수면은 허리의 정상 C자 만곡을 망가뜨려 디스크에 극단적인 부담을 줍니다.'], '베개 높이는 누워 있을 때 머리부터 목뼈, 가슴뼈까지 수평을 이루는 6~8cm가 목 관절 건강에 가장 무리가 없습니다.')">
+                <img src="https://images.unsplash.com/photo-1541501465061-d141d282f671?auto=format&fit=crop&w=300&q=80" alt="수면 자세 가이드">
+                <div class="feed-overlay">
+                    <span><i class="fa-solid fa-heart"></i> 256</span>
+                    <span><i class="fa-solid fa-comment"></i> 32</span>
+                </div>
+            </div>
+            <div class="feed-item" onclick="openModal('비수술적 정밀 체외충격파(ESWT) 치료', ['체외에서 근골격계 병변 부위에 정밀하게 강한 충격파를 투여하여 염증 완화 및 재생', '치료 시간은 약 10분 내외로 마취나 전처리가 필요 없으며 바로 일상생활 복귀 가능', '만성 족저근막염, 팔꿈치 엘보 통증, 회전근개 손상 등 만성 건/인대 염증 부위에 매우 뛰어난 회복률'], '주 1~2회 주기로 통상 3~5회 집중 치료 시 통증 경감 및 인대 재생 능력이 현격하게 촉진됩니다.')">
+                <img src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=300&q=80" alt="체외충격파">
+                <div class="feed-overlay">
+                    <span><i class="fa-solid fa-heart"></i> 189</span>
+                    <span><i class="fa-solid fa-comment"></i> 24</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 상세 진료 시간 및 위치 안내 -->
+    <section id="hours" style="background-color: #ffffff; padding: 4rem 1.2rem; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 500px; margin: 0 auto;">
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center;"><i class="fa-regular fa-clock" style="color:var(--accent-burgundy);"></i> 진료시간 및 찾아오시는 길</h3>
+            
+            <ul style="list-style: none; margin-bottom: 2rem;">
+                <li style="display:flex; justify-content:space-between; padding: 0.8rem 0; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem;">
+                    <span style="font-weight:700;">월 · 수 · 금요일</span>
+                    <span>09:00 ~ 19:00</span>
+                </li>
+                <li style="display:flex; justify-content:space-between; padding: 0.8rem 0; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem;">
+                    <span style="font-weight:700;">화 · 목요일 <span style="color:var(--accent-burgundy);">(야간진료)</span></span>
+                    <span style="font-weight:700; color:var(--accent-burgundy);">09:00 ~ 21:00</span>
+                </li>
+                <li style="display:flex; justify-content:space-between; padding: 0.8rem 0; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem;">
+                    <span style="font-weight:700;">토요일</span>
+                    <span>09:00 ~ 14:00 (점심없음)</span>
+                </li>
+                <li style="display:flex; justify-content:space-between; padding: 0.8rem 0; font-size: 0.95rem;">
+                    <span style="font-weight:700;">일요일 · 공휴일</span>
+                    <span style="color:#ef4444; font-weight:700;">휴진</span>
+                </li>
+            </ul>
+
+            <div id="location" style="background:var(--bg-light); padding:1.5rem; border-radius:16px; border:1px solid #e2e8f0; text-align:center;">
+                <p style="font-weight:800; font-size:1.05rem; color:var(--primary-dark); margin-bottom:0.4rem;">서울특별시 관악구 남현길 7 (남현동)</p>
+                <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;"><i class="fa-solid fa-train" style="color:var(--accent-burgundy);"></i> 지하철 사당역 6번 출구 도보 3분</p>
+                <a href="tel:02-3474-8275" style="display:inline-block; font-size:1.35rem; font-weight:800; color:var(--accent-burgundy); text-decoration:none;"><i class="fa-solid fa-phone"></i> 02-3474-8275</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 고정 하단 퀵 내비 바 (모바일 기기 전용 편리한 터치 인터페이스) -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>메인</span>
+        </a>
+        <a href="#today-homecare" class="nav-item">
+            <i class="fa-solid fa-dumbbell"></i>
+            <span>오늘의홈케어</span>
+        </a>
+        <a href="https://booking.naver.com" target="_blank" class="nav-item">
+            <i class="fa-regular fa-calendar-check" style="font-size:1.4rem;"></i>
+            <span>신속예약</span>
+        </a>
+        <a href="#location" class="nav-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>오시는길</span>
+        </a>
+    </div>
+
+    <!-- 8. 모달 상세 팝업 레이아웃 (HTML 단일 유도) -->
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal-content">
+            <div class="modal-header-img">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=80" alt="정밀 홈케어 운동법" id="modalImg">
+                <button class="modal-close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-tag" id="modalTag">Today's Practice</p>
+                <h3 class="modal-title" id="modalTitle">후두하근 이완 체조 가이드</h3>
+                <ol class="modal-steps" id="modalSteps">
+                    <li>양손을 깍지 껴서 목 뒤쪽에 올려줍니다.</li>
+                </ol>
+                <div class="modal-tips" id="modalTip">
+                    <strong>⚠️ 원장님의 처방 팁:</strong> 통증이 없는 선에서 척추를 세운 채 지그시 진행해 주셔야 가동성이 확실하게 늘어납니다.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. 푸터 -->
+    <footer>
+        <a href="#" class="footer-logo">하버드<span>재활의학과의원</span></a>
+        <p>주소: 서울특별시 관악구 남현길 7 (남현동 1058-6) | 원내 대표번호: 02-3474-8275</p>
+        <p>본 사이트는 하버드재활의학과의원 인스타그램 오피셜 모바일 링크 채널입니다.</p>
+        <p style="margin-top: 1.5rem; font-size:0.75rem; color:#64748b;">© 2026 하버드재활의학과의원. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 인터랙티브 탭 & 모달 JS 로직 -->
+    <script>
+        // 탭 버튼 기능 구현
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButtons;
+            
+            // 모든 탭 내용 가리기
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // 모든 탭 버튼 비활성화
+            tabButtons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // 선택한 탭 활성화 및 버튼 활성화
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // 운동법 상세 모달창 열기 기능
+        function openModal(title, stepsArray, tipText) {
+            const modal = document.getElementById('guideModal');
+            const mTitle = document.getElementById('modalTitle');
+            const mSteps = document.getElementById('modalSteps');
+            const mTip = document.getElementById('modalTip');
+            
+            // 제목 주입
+            mTitle.innerText = title;
+            
+            // 스텝 리스트 빌드
+            mSteps.innerHTML = '';
+            stepsArray.forEach(function(step) {
+                const li = document.createElement('li');
+                li.innerText = step;
+                mSteps.appendChild(li);
+            });
+            
+            // 의료적 주의사항 및 꿀팁 주입
+            mTip.innerHTML = '<strong>⚠️ 원장님의 치료 팁:</strong> ' + tipText;
+            
+            // 모달 표출
+            modal.style.display = 'flex';
+        }
+
+        // 모달창 닫기 기능
+        function closeModal() {
+            document.getElementById('guideModal').style.display = 'none';
+        }
+
+        // 모달창 바깥 검은 배경 클릭 시 자동 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('guideModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // 하단 모바일 내비게이션 바 활성화 효과
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
